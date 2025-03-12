@@ -14,13 +14,14 @@ export function Main() {
 const styles = StyleSheet.create({
     container:{
         flex: 1,
-        backgroundColor: "#855612"
+        justifyContent:'center',
+        textAlign: "center",
+        alignItems: 'center',
+        gap: 5
     },
     textLabel: {
         fontSize: 20,
         fontWeight: "bold",
-        color: "white",
-        textAlign: "center",
-        alignItems: 'center'
+        color: "black",
     }
 })
