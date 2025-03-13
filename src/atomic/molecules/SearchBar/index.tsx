@@ -1,68 +1,74 @@
 import { StyleSheet, View, Alert } from "react-native";
 import { Button } from "../../atoms/Button";
 import { Input } from "../../atoms/Input";
-import { useState } from "react";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../../../routes/stack.routes";
-import { useNavigation } from '@react-navigation/native'
-import { loadRepositoryData } from "../CardProject/actions";
-import { CardProjectProps } from "../CardProject/props";
+import { useNavigation } from "@react-navigation/native";
+import { useForm, Controller } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { useEffect } from "react";
+
+const schema = z.object({
+    username: z.string().min(3, "O nome de usuário deve ter pelo menos 3 caracteres")
+});
+
+type FormData = z.infer<typeof schema>;
 
 type LoginScreenNavigationProp = StackNavigationProp<RootStackParamList, "home">;
+
 export function SearchBar() {
-
-    const [text, setText] = useState("");
     const navigation = useNavigation<LoginScreenNavigationProp>();
-    const [repositoryData, setRepositoryData] = useState<CardProjectProps[] | null>(null);
 
+    const {
+        control,
+        handleSubmit,
+        formState: { errors }
+    } = useForm<FormData>({
+        resolver: zodResolver(schema),
+    });
 
-    const handleSearch = async () => {
-
-        if (text.trim() === "") {
-            Alert.alert("Erro", "Por favor, insira um nome de usuário.");
-            return;
+    useEffect(() => {
+        if (errors.username) {
+            Alert.alert("Erro", errors.username.message);
         }
-    
+    }, [errors.username]);
+
+    const handleSearch = async (data: FormData) => {
         try {
-            const response = await fetch(`https://api.github.com/users/${text}`);
-            const data = await response.json();
-            
-            if(data.status == '404') {
+            const response = await fetch(`https://api.github.com/users/${data.username}`);
+            const userData = await response.json();
+
+            if (userData.message === "Not Found") {
                 Alert.alert("Erro", "Usuário não encontrado.");
                 return;
-            } else {
-                navigation.navigate("projects", { username: text })
-                // setRepositoryData(data.repositories);
-                // Alert.alert('Repositórios carregados com sucesso')
             }
 
+            navigation.navigate("projects", { username: data.username });
         } catch (error) {
             Alert.alert("Erro", "Ocorreu um erro ao buscar os repositórios.");
         }
-
-        // loadRepositoryData(text, setRepositoryData);
-        // if (loadRepositoryData == null) {
-        //     Alert.alert('Usuário invalido')
-        // } else {
-        //     navigation.navigate("projects", { username: text })
-        // }
-
-    }
-
+    };
 
     return (
         <View style={styles.container}>
-            <Input value={text} onChangeText={setText} />
-            <Button title="Buscar" onPress={() => { handleSearch() }} />
+            <Controller
+                control={control}
+                name="username"
+                render={({ field }) => (
+                    <Input value={field.value} onChangeText={field.onChange} />
+                )}
+            />
+            <Button title="Buscar" onPress={handleSubmit(handleSearch)} />
         </View>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
     container: {
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        alignSelf: 'center'
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        alignSelf: "center"
     }
-})
+});
