@@ -1,4 +1,8 @@
 export interface CardProjectProps {
-    title: string;
-    description: string;
+    id: number;
+    name?: string;
+    full_name: string;
+    description?: string;
+    created_at: string;
+    html_url?: string
 }
