@@ -11,6 +11,7 @@ export function Input({ value, onChangeText }: InputProps) {
                 value={value}
                 onChangeText={onChangeText}
                 placeholder="Digite seu username do github"
+                placeholderTextColor={'white'}
             />
         </View>
     )
@@ -19,10 +20,12 @@ export function Input({ value, onChangeText }: InputProps) {
 const styles = StyleSheet.create({
     input: {
         height: 40,
-        borderColor: 'gray',
-        borderWidth: 1,
+        borderColor: 'white',
+        borderWidth: 2,
         paddingHorizontal: 10,
         marginBottom: 10,
         borderRadius: 5,
+        color: 'white',
+        
     }
 })

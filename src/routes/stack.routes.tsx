@@ -18,8 +18,10 @@ export function StackRoutes() {
                 component={HomeTemplate}
                 options={{
                     title: 'Main Menu',
-                    headerTintColor: 'blue',
-
+                    headerTitleAlign: 'center',
+                    headerTintColor: 'white',
+                    headerTransparent: true,
+                    headerShown: false
                 }}
 
             />
@@ -29,7 +31,10 @@ export function StackRoutes() {
                 component={RepositoryTemplate}
                 options={{
                     title: 'Projects Menu',
-                    headerTintColor: 'blue',
+                    headerTitleAlign: 'center',
+                    headerTintColor: 'white',
+                    headerTransparent: true,
+                    headerShown: false
                 }}
             />
         </Stack.Navigator>
