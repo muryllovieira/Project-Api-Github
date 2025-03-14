@@ -6,7 +6,7 @@ type ApiResponse = CardProjectProps[];
 
 export const fetchGetRepositoryData = async (username: string) => {
     try {
-        const response = await axios.get<ApiResponse>(`${GITHUB_API_BASE_URL}${username}/repos`)
+        const response = await axios.get<ApiResponse>(`${GITHUB_API_BASE_URL}${username}/repos?per_page=100`)
 
         const repositoryData = response.data
 
