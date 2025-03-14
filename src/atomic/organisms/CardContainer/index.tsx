@@ -3,14 +3,23 @@ import { CardProject } from "../../molecules/CardProject";
 import { loadRepositoryData } from "../../molecules/CardProject/actions";
 import { useState, useEffect } from "react";
 import { CardProjectProps } from "../../molecules/CardProject/props";
+import Animated, {
+    useAnimatedRef,
+    useDerivedValue,
+    useSharedValue,
+    scrollTo,
+} from 'react-native-reanimated';
+import type { SharedValue } from 'react-native-reanimated';
 
 export function CardContainer({ username }: { username: string }) {
+    const animatedRef = useAnimatedRef<Animated.ScrollView>();
+    const scroll = useSharedValue<number>(0);
 
     const [repositoryData, setRepositoryData] = useState<CardProjectProps[] | null>(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        if (username) { 
+        if (username) {
             setLoading(true);
             loadRepositoryData(username, (data) => {
                 setRepositoryData(data);
@@ -23,7 +32,7 @@ export function CardContainer({ username }: { username: string }) {
         <ScrollView>
             <View style={styles.container}>
                 {loading ? (
-                    <CardProject 
+                    <CardProject
                         id={0}
                         name="Carregando..."
                         full_name=""
@@ -33,7 +42,7 @@ export function CardContainer({ username }: { username: string }) {
                     />
                 ) : repositoryData && repositoryData.length > 0 ? (
                     repositoryData.map((repo) => (
-                        <CardProject 
+                        <CardProject
                             key={repo.id}
                             id={repo.id}
                             name={repo.name || "Sem Nome"}

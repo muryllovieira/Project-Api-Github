@@ -9,9 +9,9 @@ export function RepositoryTemplate({ route }: { route: RepositoryTemplateRoutePr
   const { username } = route.params;
   return (
     <LinearGradient
-    style={styles.container}
-    colors={['#332332', '#A15EF2']}
-     end={{ x: 0.9, y: 1.7 }}
+      style={styles.container}
+      colors={['#332332', '#A15EF2']}
+      end={{ x: 0.9, y: 1.7 }}
     >
       <CardContainer username={username} />
     </LinearGradient>
