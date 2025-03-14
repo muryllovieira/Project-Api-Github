@@ -3,21 +3,36 @@ const { Screen, Navigator } = createStackNavigator()
 
 import { HomeTemplate } from '../atomic/templates/HomeTemplate'
 import { RepositoryTemplate } from '../atomic/templates/RepositoryTemplate'
+import { SplashTemplate } from '../atomic/templates/SplashTemplate'
 
 export type RootStackParamList = {
     home: undefined;
     projects: { username: string };
+    splash: undefined;
 }
 const Stack = createStackNavigator<RootStackParamList>();
 
 export function StackRoutes() {
     return (
-        <Stack.Navigator initialRouteName='home'>
+        <Stack.Navigator children initialRouteName='splash'>
+            <Stack.Screen
+                name='splash'
+                component={SplashTemplate}
+                options={{
+                    title: 'Home',
+                    headerTitleAlign: 'center',
+                    headerTintColor: 'white',
+                    headerTransparent: true,
+                    headerShown: false
+                }}
+
+            />
+
             <Stack.Screen
                 name='home'
                 component={HomeTemplate}
                 options={{
-                    title: 'Main Menu',
+                    title: 'Home',
                     headerTitleAlign: 'center',
                     headerTintColor: 'white',
                     headerTransparent: true,
@@ -30,13 +45,17 @@ export function StackRoutes() {
                 name='projects'
                 component={RepositoryTemplate}
                 options={{
-                    title: 'Projects Menu',
+                    title: 'Projetos do Usuário',
                     headerTitleAlign: 'center',
-                    headerTintColor: 'white',
-                    headerTransparent: true,
-                    headerShown: false
+                    headerTintColor: '#FFF',
+                    headerStyle: {
+                        backgroundColor: '#332332',
+                        elevation: 0,
+                        shadowOpacity: 0,
+                    },
                 }}
             />
+
         </Stack.Navigator>
     )
 }

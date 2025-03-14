@@ -62,10 +62,10 @@ export function CardContainer({ username }: { username: string }) {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         gap: 5,
         justifyContent: 'center',
-        paddingBottom: 12
+        paddingBottom: 12,
+        marginTop: 32
     },
     noReposText: {
         fontSize: 16,
