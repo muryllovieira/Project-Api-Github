@@ -1,9 +1,12 @@
 # PROJETO API DO GITHUB 👾
 
-![image](https://github.com/user-attachments/assets/086542a4-f09f-453e-9101-2410af34a49c) ![image](https://github.com/user-attachments/assets/dce053d8-ffb7-4c07-b774-40678b31c209)![image](https://github.com/user-attachments/assets/e09dae79-7143-45ef-a774-76f64b0045d8)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/53f1323d-6dde-42e5-b9ed-647a5e596287" width="250" />
+  <img src="https://github.com/user-attachments/assets/dce053d8-ffb7-4c07-b774-40678b31c209" width="250" />
+  <img src="https://github.com/user-attachments/assets/e09dae79-7143-45ef-a774-76f64b0045d8" width="250" />
+</p>
 
-
-O projeto tem como intuito uma simples listagem de repositorios do Github, utilizando diversas dependências do React Native.
+O projeto tem como intuito uma simples listagem de repositórios do Github, utilizando diversas dependências do React Native.
 
 ## Links
 - [React Native](https://reactnative.dev/)
@@ -16,8 +19,6 @@ O projeto tem como intuito uma simples listagem de repositorios do Github, utili
 - [React Navigation](https://reactnavigation.org/docs/stack-navigator/)
 - [React Hook Form](https://www.react-hook-form.com/)
 - [Deploy](https://github.com/muryllovieira/Project-Api-Github)
-
-
 
 ## Para Começar
 
@@ -32,10 +33,10 @@ Este é um projeto [Expo](https://expo.dev) criado com [`create-expo-app`](https
 2. Start o aplicativo
 
    ```bash
-    npx expo start
+   npx expo start
    ```
 
-Na saída, você encontrará opções para abrir o aplicativo em um
+Na saída, você encontrará opções para abrir o aplicativo em um:
 
 - [development build](https://docs.expo.dev/develop/development-builds/introduction/)
 - [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
@@ -43,7 +44,8 @@ Na saída, você encontrará opções para abrir o aplicativo em um
 - [Expo Go](https://expo.dev/go), um sandbox limitado para testar o desenvolvimento de aplicativos com Expo
 
 ## Desenvolvido
-| Desenvolvedor | Avatar 
-| ------------- | ------ 
-| ![](https://img.shields.io/badge/DESENVOLVEDOR-MurylloVieira-blue?style=for-the-badge&logo=appveyor) | <a href="https://github.com/muryllovieira"><img src="https://avatars.githubusercontent.com/u/110054149?v=4" height="50" style="max-width: 100%;"></a> 
+
+| Desenvolvedor | Avatar |
+|--------------|--------|
+| ![](https://img.shields.io/badge/DESENVOLVEDOR-MurylloVieira-blue?style=for-the-badge&logo=appveyor) | <a href="https://github.com/muryllovieira"><img src="https://avatars.githubusercontent.com/u/110054149?v=4" height="50" style="max-width: 100%;"></a> |
 
