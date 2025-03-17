@@ -10,7 +10,7 @@ import {
 } from "react-native-reanimated";
 import Animated from "react-native-reanimated";
 
-const githubLogo = require("../../../../assets/github-mark.png");
+const githubLogo = require("../../../../assets/splash-icon.png");
 
 export function Main() {
     const opacity = useSharedValue(0);
@@ -56,7 +56,7 @@ export function Main() {
                             tintColor={"white"}
                         />
                     </Animated.View>
-                    <Text style={styles.textLabel}>Digite abaixo o seu usuário do Github:</Text>
+                    <Text style={styles.textLabel}>Digite abaixo um nome de usuário do Github:</Text>
                     <SearchBar />
                 </Animated.View>
             </LinearGradient>

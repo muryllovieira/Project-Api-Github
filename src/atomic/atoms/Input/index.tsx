@@ -10,7 +10,7 @@ export function Input({ value, onChangeText }: InputProps) {
                 style={styles.input}
                 value={value}
                 onChangeText={onChangeText}
-                placeholder="Digite seu username do github"
+                placeholder="Digite um username do github"
                 placeholderTextColor={'white'}
             />
         </View>

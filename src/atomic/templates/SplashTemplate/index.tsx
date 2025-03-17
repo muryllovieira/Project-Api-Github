@@ -11,7 +11,7 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../../../routes/stack.routes";
 
-const githubLogo = require("../../../../assets/github-mark.png");
+const githubLogo = require("../../../../assets/splash-icon.png");
 type LoginScreenNavigationProp = StackNavigationProp<RootStackParamList, "home">;
 export function SplashTemplate() {
   const navigation = useNavigation<LoginScreenNavigationProp>();

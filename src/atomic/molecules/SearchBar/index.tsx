@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        alignSelf: "center"
+        alignSelf: "center",
+        gap: 16
     }
 });
