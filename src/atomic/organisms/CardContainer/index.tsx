@@ -4,73 +4,77 @@ import { loadRepositoryData } from "../../molecules/CardProject/actions";
 import { useState, useEffect } from "react";
 import { CardProjectProps } from "../../molecules/CardProject/props";
 import Animated, {
-    useAnimatedRef,
-    useDerivedValue,
-    useSharedValue,
-    scrollTo,
-} from 'react-native-reanimated';
-import type { SharedValue } from 'react-native-reanimated';
+  useAnimatedRef,
+  useDerivedValue,
+  useSharedValue,
+  scrollTo,
+} from "react-native-reanimated";
+import type { SharedValue } from "react-native-reanimated";
 
 export function CardContainer({ username }: { username: string }) {
-    const animatedRef = useAnimatedRef<Animated.ScrollView>();
-    const scroll = useSharedValue<number>(0);
+  const animatedRef = useAnimatedRef<Animated.ScrollView>();
+  const scroll = useSharedValue<number>(0);
 
-    const [repositoryData, setRepositoryData] = useState<CardProjectProps[] | null>(null);
-    const [loading, setLoading] = useState(true);
+  const [repositoryData, setRepositoryData] = useState<
+    CardProjectProps[] | null
+  >(null);
+  const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        if (username) {
-            setLoading(true);
-            loadRepositoryData(username, (data) => {
-                setRepositoryData(data);
-                setLoading(false);
-            });
-        }
-    }, [username]);
+  useEffect(() => {
+    if (username) {
+      setLoading(true);
+      loadRepositoryData(username, (data) => {
+        setRepositoryData(data);
+        setLoading(false);
+      });
+    }
+  }, [username]);
 
-    return (
-        <ScrollView>
-            <View style={styles.container}>
-                {loading ? (
-                    <CardProject
-                        id={0}
-                        name="Carregando..."
-                        full_name=""
-                        created_at=""
-                        description="Buscando os dados..."
-                        html_url=""
-                    />
-                ) : repositoryData && repositoryData.length > 0 ? (
-                    repositoryData.map((repo) => (
-                        <CardProject
-                            key={repo.id}
-                            id={repo.id}
-                            name={repo.name || "Sem Nome"}
-                            full_name={repo.full_name}
-                            created_at={repo.created_at}
-                            description={repo.description || "Sem descrição"}
-                            html_url={repo.html_url || ""}
-                        />
-                    ))
-                ) : (
-                    <Text style={styles.noReposText}>Este usuário não tem repositórios públicos.</Text>
-                )}
-            </View>
-        </ScrollView>
-    );
+  return (
+    <ScrollView>
+      <View style={styles.container}>
+        {loading ? (
+          <CardProject
+            id={0}
+            name="Carregando..."
+            full_name=""
+            created_at=""
+            description="Buscando os dados..."
+            html_url=""
+          />
+        ) : repositoryData && repositoryData.length > 0 ? (
+          repositoryData.map((repo) => (
+            <CardProject
+              key={repo.id}
+              id={repo.id}
+              name={repo.name || "Sem Nome"}
+              full_name={repo.full_name}
+              created_at={repo.created_at}
+              description={repo.description || "Sem descrição"}
+              html_url={repo.html_url || ""}
+            />
+          ))
+        ) : (
+          <Text style={styles.noReposText}>
+            Este usuário não tem repositórios públicos.
+          </Text>
+        )}
+      </View>
+    </ScrollView>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        gap: 5,
-        justifyContent: 'center',
-        paddingBottom: 12,
-        marginTop: 32
-    },
-    noReposText: {
-        fontSize: 16,
-        color: "gray",
-        marginTop: 50,
-        textAlign: "center",
-    },
-})
+  container: {
+    gap: 5,
+    justifyContent: "center",
+    paddingBottom: 12,
+    marginTop: 32,
+  },
+  noReposText: {
+    fontSize: 16,
+    color: "gray",
+    marginTop: 50,
+    textAlign: "center",
+  },
+});
