@@ -1,9 +1,9 @@
-import { CardProjectProps } from "../../organisms/Main/CardProject/props";
+import { CardProjectProps } from "./props";
 import { Card } from "@rneui/themed";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Linking } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { formatDate } from "../../../utils/formatDate";
+import { formatDate } from "../../../../utils/formatDate";
 
 export function CardProject({
   name,
@@ -12,24 +12,17 @@ export function CardProject({
   html_url,
 }: CardProjectProps) {
   return (
-    <LinearGradient
-      colors={["#6C3483", "#A15EF2"]}
-      style={styles.cardContainer}
-      start={{ x: 0, y: 0 }}
-      end={{ x: 1, y: 1 }}
-    >
-      <Card containerStyle={styles.innerCard}>
-        <Card.Title style={styles.textTitle}>{name}</Card.Title>
-        <Card.Divider />
-        <Text style={styles.description}>{description}</Text>
-        <Card.Divider />
-        <Text style={styles.date}>Criado em: {formatDate(created_at)}</Text>
-        <Card.Divider />
-        <TouchableOpacity onPress={() => Linking.openURL(html_url)}>
-          <Text style={styles.link}>🔗 Ver Projeto</Text>
-        </TouchableOpacity>
-      </Card>
-    </LinearGradient>
+    <Card containerStyle={styles.innerCard}>
+      <Card.Title style={styles.textTitle}>{name}</Card.Title>
+      <Card.Divider />
+      <Text style={styles.description}>{description}</Text>
+      <Card.Divider />
+      <Text style={styles.date}>Criado em: {formatDate(created_at)}</Text>
+      <Card.Divider />
+      <TouchableOpacity onPress={() => Linking.openURL(html_url)}>
+        <Text style={styles.link}>🔗 Ver Projeto</Text>
+      </TouchableOpacity>
+    </Card>
   );
 }
 
